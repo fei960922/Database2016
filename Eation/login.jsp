@@ -8,7 +8,7 @@
 	function check() {
 		var ele = document.getElementsByClassName("to_be_check");
 		for (var i=0;i<ele.length;i++) {var e = ele[i];
-			if (e.value.length<2 || e.value.length>100 || e.value=="null") {
+			if (e.value=="" || e.value.length>100 || e.value=="null") {
 				alert("You cannot submit empty/'null'/too long value!");
 				e.focus();return false;
 			}}return true;}
@@ -89,7 +89,7 @@
 	                <input type="password" class="form-control to_be_check" name="password" placeholder="******" aria-describedby="basic-addon2">
 	              </div>
 	              <button class="btn btn-default" type="submit">Login</button>
-	              <button class="btn btn-default" onclick="window.open('login.jsp?do=register')">Register</button>
+	              <button class="btn btn-default" type="button" onclick="window.open('login.jsp?do=register')">Register</button>
 	            </form>
 		        </div>
 		    </div>
@@ -134,7 +134,7 @@ if (request.getParameter("warn")!=null)
 	                <input type="password" class="form-control to_be_check" name="password" placeholder="******" aria-describedby="basic-addon2">
 	              </div>
 	              <button class="btn btn-default" type="submit">Login</button>
-	              <button class="btn btn-default" onclick="window.open('login.jsp?do=register')">Register</button>
+	              <button class="btn btn-default" type="button" onclick="window.open('login.jsp?do=register')">Register</button>
 	            </form>
 		        </div>
 		    </div>

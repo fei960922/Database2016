@@ -165,8 +165,7 @@ public class Order{
 			String id = Integer.toString(results.getInt("cnt")+1);
 			String query = "insert into opinion values ('"+id+"','"+text+"', '"+score+"', '"+username+"', '"+pid+"', '"+date+"')";
 			System.out.println(query);	
-			stmt.executeUpdate("insert into opinion_rate values (1, 'sssss_admin', "+id+")");
-			stmt.executeUpdate(query);
+			stmt2.executeUpdate(query);
 			return true;
         } catch(Exception e) {
         	System.out.println(e);

@@ -207,6 +207,7 @@ a:hover {text-decoration: none;}
 	text-align: center;
 }
 
+
 /*	------------------------------------------
 	              CSS for "Index"
 	------------------------------------------  */
@@ -220,183 +221,33 @@ a:hover {text-decoration: none;}
 	width :90%;
 }
 .index_2{
-	text-align      :center;
-	background-color: #DDDDDD;
+	background-color: #2E5D9C;
+	color : #FFFFFF;
 }
-.index_2 h1{
+.index_2 h3 {
+	line-height   : 1.4em;
+}
+.index_2 h1, .index_3 h1{
+	font-size: 55px;
 	line-height   : 2em;
+	text-align : center;
 	vertical-align: middle;
 	margin        : 0;
 }
-.index_3, .index_5{
-	background-color: #FFFFFF;
+.index_3 {
+	text-align : center;
 }
-.index_3 div {
-	text-indent:2em;
-	padding    : 5% 3%;
+@media (max-width: 768px){.index_3 h2{font-size:10px !important;}}
+.index_3 img {
+	float: center;
+	width:100%;
+	padding:20%;
 }
-.index_3 img{
-	width : 20%;
+.index_2 img{
+	width : 40%;
 	margin: 2%;
 	float : right;
 }
-@media (min-width:1100px) {.index_3 img {width:200px;}}
-.index_5 img{
-	width : 96%;
-	margin: 2%;
-}
-.index_5 ul>li {
-	line-height: 2em;
-}
-.index_5 ul>li:first-child>a {
-	font-size :20px;
-}
-.index_5 .btn {
-	padding: 10px 40px;
-	margin : 10px 30px;
-}
-.index_4{
-	background           : url(../images/index_2.jpg) 50% 0 no-repeat;
-	background-size      : cover;
-	background-attachment: fixed;
-	box-shadow           : 0 0 20px #000000 inset; 	
-}
-.index_4 h1{
-	color      : white;
-	padding    : 50px 0 40px 0;
-	text-shadow: 0 0 30px #000000;
-	text-align : center;
-}
-.index_4 img{
-	width   : 100%;
-	position: fixed;
-	top     : 0;
-	z-index : -1;
-}
-@media(min-width:640px){
-	.index_1 img {margin:8%;width:50%;}
-	.index_2 h1,.index_4 h1{font-size:75px;}
-}
-
-
-/*	------------------------------------------
-	        CSS for "Introduction"
-	------------------------------------------  */
-
-.intro_1 h1,.intro_2 h1,.intro_3 h1,.intro_4 h1{
-	line-height: 1em;
-	padding:20px;
-	font-size:200px;
-	margin:20px;
-}
-.intro_1 h1{
-	border-bottom: 15px solid #CCCCCC;
-	float:left;
-}
-.intro_2 h1{
-	border-right: 15px solid #CCCCCC;
-	float:right;
-}
-.intro_3 h1{
-	border-left: 15px solid #CCCCCC;
-	float:left;
-	position:absolute;
-}
-.intro_4 h1{
-	border-top: 15px solid #CCCCCC;
-	float:right;
-}
-
-.intro_1 {
-	background-color: rgba(46,93,156,1);
-	color:white;
-	padding:5% 0;
-}
-.intro_1>div>img {
-	width:360px;
-	max-width:40%;
-	float:right;
-	margin:6%;
-}
-.intro_1 h2 {padding-top:10%;}
-.intro_1 p{font-size:14px;}
-.intro_1>div>div {padding:10px;}
-
-.intro_2 {background-color: rgba(46,93,156,0.2);}
-.intro_2>div>div {padding:5% 20px;}
-.intro_2 h3{
-	text-align:center;
-	line-height:1em;
-}
-.intro_2 img{
-	width:90%;
-	box-shadow:0 0 30px #000000;
-	margin:5% 5%;
-}
-.intro_2 h4 {
-	font-size:35px;
-	padding:0 1%;
-	text-align: right;
-}
-@media(max-width: 600px){.intro_2 h4{font-size:20px;}}
-.intro_3 {
-	background-color: rgba(46,93,156,0.5);
-	position:relative;
-}
-.intro_3 img {width:100%;}
-.intro_3 p,.intro_4 p {
-	font-size:14px;
-	margin:0;
-}
-.intro_slide {
-	height:100%;
-	width:100%;
-}
-.intro_slide_text{
-	padding:40px 0 0 40%;
-	min-height:250px;
-}
-.intro_slide_pic {
-	width:85%;
-	margin:20px auto;
-	border:10px solid #003333;
-	background-size: cover;
-	background-repeat: no-repeat;
-	background-position: center;
-}
-.intro_3 h2{
-	color:#000000;
-	font-size: 50px;
-	margin:0;
-	padding:20px;
-}
-@media(max-width: 660px) {
-	.intro_3 h1 {display:none;}
-	.intro_slide_text{padding-left:10%;}
-}
-.intro_4 {background-color: rgba(46,93,156,0.9);color:white;}
-.intro_4 {padding-top:10%;}
-.intro_4 h2 {margin-top:0;}
-.intro_4 p {padding:10px;}
-.intro_4 img {
-	float:left;
-	padding:20px;
-}
-.intro_4 table {
-	margin:20px auto;
-}
-.intro_4 td {
-	padding:10px 10px;
-}
-.intro_4 button,.intro_2 button{
-	padding:5px 20px;
-	margin:0 20px 20px 20px;
-}
-@media(max-width: 480px){
-	.intro_1 h1,.intro_2 h1,.intro_3 h1,.intro_4 h1{display:none;}
-}
-
-
 /*	------------------------------------------
 	        CSS for "User_table"
 	------------------------------------------  */
@@ -438,4 +289,8 @@ a:hover {text-decoration: none;}
 	width : 35%;
 	float: left;
 	padding: 20px;
+}
+.author h1 {
+	text-align:left;
+	line-height:1.5em;
 }
