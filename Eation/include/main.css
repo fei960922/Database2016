@@ -8,7 +8,7 @@ body,html {
 	height     : 100%;
 	margin     : 0;
 	padding    : 0;
-	font-family: Arial,"Microsoft YaHei","微软雅黑",sans-serif;
+	font-family: Arial,"Microsoft YaHei";
 	background-color:white;
 }
 .padding_0{padding:0 !important;}
@@ -31,26 +31,6 @@ body,html {
 
 a:hover {text-decoration: none;}
 
-.acm_article h1,.acm_article h2 {
-	border-bottom:1px solid #DDDDDD;
-	margin-bottom:5px;
-	line-height: 2em;
-}
-.acm_article li {
-	line-height:1.6em;
-}
-.acm_article ul {
-	list-style: none;
-	display: block;
-}
-.acm_article img {
-	width:100%;
-	margin:5px;
-}
-.acm_article p {
-	line-height: 1.6em;
-	text-indent: 2em;
-}
 
 /*	------------------------------------------
 	   CSS of "Header & Footer & container"
@@ -72,7 +52,7 @@ a:hover {text-decoration: none;}
 @media (max-width: 960px) {.inners	{width:100%;}}
 
 #headingDefault{
-	background: #FFC000;
+	background: #2E5D9C;
 	position  :	fixed;
 	z-index   :	1000;
 	top       : 0px;
@@ -104,7 +84,7 @@ a:hover {text-decoration: none;}
 
 #headingForIndex.affix {
 	position          : fixed;
-	background        : #FFC000;
+	background        : #2E5D9C;
 	top               : 0;
 	bottom            :auto;
 	width             :100%;
@@ -129,7 +109,7 @@ a:hover {text-decoration: none;}
 }
 
 #headingForPost.affix {
-   background: #FFC000;
+   background: #2E5D9C;
 	position  :	fixed;
 	z-index   :	1000;
 	top       : 0;
@@ -199,9 +179,9 @@ a:hover {text-decoration: none;}
 }
 
 .login-in {
-	background-color: #FFC000;
+	background-color: #2E5D9C;
 	color : #FFFFFF;
-	padding-top: 50px;
+	padding-top: 20px;
 }
 
 .login-in img {
@@ -211,7 +191,7 @@ a:hover {text-decoration: none;}
 
 .login-inside {
 	padding: 20px;
-	background-color: #FFC000;
+	background-color: #2E5D9C;
 }
 
 .login-inside div {
@@ -219,8 +199,8 @@ a:hover {text-decoration: none;}
 }
 
 .login-inside button {
-	width:33%;
-	margin: 0 33% 0 33%;
+	width:39%;
+	margin:5%;
 }
 
 .panel-title {
@@ -416,341 +396,6 @@ a:hover {text-decoration: none;}
 	.intro_1 h1,.intro_2 h1,.intro_3 h1,.intro_4 h1{display:none;}
 }
 
-/*CSS For Timeline in Intro_index*/
-#dates a {
-	color: black;
-	text-decoration: none;
-	-webkit-transition: 0.5s;
-	-moz-transition: 0.5s;
-	-o-transition: 0.5s;
-	-ms-transition: 0.5s;
-	transition: 0.5s;
-	margin: 0;
-	padding: 0;
-}
-#dates a:hover,
-#dates a.selected {
-	font-size:20px;
-	margin: 0;
-	padding: 0;
-}
-
-#timeline {
-	max-width: 800px;
-	width:100%;
-	height: 100px;
-	overflow: hidden;
-	margin: 50px auto;
-	padding: 0;
-	background: url('../images/dot.gif') left 45px repeat-x;
-}
-#dates {
-	width: 800px;
-	height: 60px;
-	overflow: hidden;
-	margin: 0;
-padding: 0;
-}
-#dates li {
-	list-style: none;
-	float: left;
-	width: 100px;
-	height: 50px;
-	font-size: 14px;
-	text-align: center;
-	background: url('../images/biggerdot.png') center bottom no-repeat;
-	margin: 0;
-	padding: 0;
-}
-#dates a {
-	line-height: 38px;
-	padding-bottom: 10px;
-	margin: 0;
-}
-#dates .selected {
-    font-size: 20px;
-    margin: 0;
-	padding: 0;
-}
-
-#issues {
-	width: 800px;
-	height: 350px;
-	overflow: hidden;
-	margin: 0;
-	padding: 0;
-}	
-#issues li {
-	width: 800px;
-	height: 350px;
-	list-style: none;
-	float: left;
-	margin: 0;
-	padding: 0;
-}
-#issues li p {
-	text-align:center;
-	font-size: 14px;
-	margin-right: 70px;
-	font-weight: normal;
-	line-height: 22px;
-	text-shadow: #000 1px 1px 2px;
-	margin: 0;
-	padding: 0;
-}
-@media (max-width: 800px){#timeline{display:none !important;}}
-
-
-
-/*	------------------------------------------
-	        CSS for "Lesson Center"
-	------------------------------------------  */
-
-.lesson_main div img{
-	width     : 90%;
-	margin    : 10% 5% 0 5%;
-	border    : 10px solid #FFFFFF;
-	box-shadow: 0 0 30px #000000;
-}
-
-.lesson_main div>div {
-	text-align:	center;
-}
-
-.online_judge{
-	position:absolute;
-	top:0;
-	right:0;
-	width:300px;
-	height:272px;
-	overflow:hidden;
-}
-.online_judge>div {
-	position:relative;
-	width:500px;
-	top:120px;
-	right:30px;
-	text-align: center;
-	background-color: rgba(255,255,255,0.4);
-	font-size:30px;
-	padding:10px 0;
-	transform: rotate(45deg);
-	-ms-transform: rotate(45deg);		
-	-webkit-transform: rotate(45deg);	
-	-o-transform: rotate(45deg);		
-	-moz-transform: rotate(45deg);	
-}
-.online_judge a{color:#FFFFFF;}
-.online_judge a:hover{color:#CCCCCC;}
-@media(max-width:520px){
-	.online_judge a{font-size:14px;vertical-align: middle;}
-	.online_judge>div {top:70px;right:0;padding:0;}
-}
-
-/*	------------------------------------------
-	        CSS for "Activity Center"
-	------------------------------------------  */
-
-.activity_main {height:100%;}
-.activity_main>div { 
-	background-size: cover;
-	background-repeat: no-repeat;
-	height:100%;
-}
-.activity_main>div>div {  
-	padding    : 10% 0 0 15%; 
-	width      : 45%;
-	max-width  : 600px;
-	min-width  : 300px;
-	text-shadow: 0 -1px 0 rgba(0,0,0,0.5); 
-	line-height: 1.5em; color: #fff; 
-}
-.activity_main h2 { font-size:40px;}
-
-
-/*	------------------------------------------
-	        CSS for "Academic Center"
-	------------------------------------------  */
-
-.academic_lt>div {
-	text-align      : center;
-	padding:1px;
-}
-
-.academic_bottom {
-	width:100%;
-	text-align: center;
-}
-.academic_bottom>div {padding:0;}
-.academic_now,
-.academic_lt>div:hover{
-	color:#FFC000;
-	border-left:0;
-	background-color: #CCCCCC;
-	border-left:3px solid #FFC000;
-	border-right:3px solid #FFC000;
-}
-.academic_bottom .nav>.active>a,
-.academic_bottom .nav>.active:hover>a,
-.academic_bottom .nav>.active:focus>a,
-.academic_bottom .nav>li>a:hover,
-.academic_bottom .nav>li>a:focus{
-	width:100%;
-	color:#FFC000;
-	border-left:0;
-	background-color: #CCCCCC;
-	border-right:3px solid #FFC000;
-}
-@media (max-height:600px){.academic_bottom {display:none;}}
-@media (max-height:800px){
-	.academic_left h2{font-size: 25px;margin:10px 0;}
-	.academic_bottom a {padding: 2px !important;}
-	.academic_lt {padding-bottom:0 !important;}
-}
-@media (min-width: 801px){
-.academic_left {
-	float:left;
-	position:fixed;
-	width: 17%;
-	max-width:200px;
-	height: 100%;
-}
-.academic_left h2{line-height: 1em;}
-.academic_lt{
-	padding:20px 0;
-}
-.academic_main {
-	padding: 20px 2% 20px 18%;
-	width:100%;
-}
-}
-@media (max-width: 800px){
-.academic_left {
-	width:	100%;
-	height:	120px !important; 
-}
-.academic_lt>div{
-	float:left;
-	background-color: #EEEEEE;
-	width:20%;
-}
-.academic_lt>div>h1{font-size: 40px;line-height: 0.5em;}
-.academic_lt>div>h2{font-size: 20px;line-height: 0.5em;}
-.academic_main {
-	width:	100%;
-}
-.academic_bottom{display:none;}
-}
-
-/*	------------------------------------------
-	        CSS for "SUB Lesson Pages"
-	------------------------------------------  */
-
-.lesson_left img{
-	width     : 90%;
-	margin    : 10% 5% 0 5%;
-	border    : 10px solid #FFFFFF;
-	box-shadow: 0 0 30px #000000;
-}
-
-.lesson_right {
-	padding-left: 100px;
-	margin-top:	100px;
-}
-
-.lesson_right div {
-	min-height:300px;
-	padding:20px;
-}
-
-/*	------------------------------------------
-	        CSS for "SUB intro. Pages"
-	------------------------------------------  */
-.student_slide{
-	height:100%;
-}
-.student_slide div {
-	height:70%;
-	background-size: 100%;
-	background-repeat: no-repeat;
-	background-position: center;
-	width:70%;
-	box-shadow: 0 0 30px #000000;
-}
-.student_slide h1{
-	float:left;
-	padding:2%;
-	font-size:100px;
-}
-.student_slide p{padding:2%;}
-
-.content h5,.content h3{
-	text-align: center;
-	margin    :20px auto;
-}
-@media(max-width:991px){.content{display:none;}}
-.student_in{
-	background-size: cover;
-	background-position: center;
-	width          : 100%;
-	display        : block;
-	overflow       : hidden;
-	color          : white;
-	text-shadow    : 0 0 10px #000000;
-}
-.student_in h1{
-	font-size: 60px;
-	padding  : 20px 50px;
-}
-.student_l div,.student_r div{
-	width  :50%;
-	padding: 20px 50px;
-}
-.student_r h1 {text-align: right;}
-.student_l img,.student_r div {float:right;}
-.student_r img,.student_l div {float:left;}
-.student_l img,.student_r img {
-	margin    :-100px 3% 3% 3%;
-	width     :42%;
-	border    : 10px solid #FFFFFF;
-	box-shadow: 0 0 30px #000000;
-}
-.student_b div {padding:20px 50px;}
-.student_b h1 {
-	margin: 20px 0 12% 0;
-}
-.student_b p{
-	float:left;
-	width:50%;
-	padding:1% 2%;
-}
-.student_black,.student_black a {color:black;}
-.student_white,.student_white a,.student_grey a {color:white;}
-.student_grey div {background-color: rgba(0,0,0,0.4);}
-.teacher_in{
-	min-height: 500px;
-}
-.teacher_in:nth-child(even) {
-	background-color: #EEEEEE;
-}
-@media(max-width:770px){.student_l div,.student_r div{padding:2px 10px;}}
-@media(max-width:480px){.student_l div,.student_r div{width:100%;padding:2px 10px;}
-						.student_l img,.student_r img{width:96%;margin-top: 2%}}
-@media(min-width:480px){.teacher_in img{float:right;}
-						.student_in {height:500px;}}
-.teacher_in img{
-	margin    :10%;
-	width     :30%;
-	border    : 10px solid #FFFFFF;
-	box-shadow: 0 0 30px #000000;
-}
-.teacher_in h1{
-	font-size: 60px;
-	padding  : 50px 5%;
-}
-.teacher_in p{
-	padding: 0 5%;
-}
 
 /*	------------------------------------------
 	        CSS for "User_table"
@@ -788,4 +433,9 @@ padding: 0;
 .paddingadd {
 	padding: 20px;
 	text-align:center;
+}
+.author img {
+	width : 35%;
+	float: left;
+	padding: 20px;
 }

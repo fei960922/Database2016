@@ -4,7 +4,15 @@
 <jsp:param name="title" value="Login in --- Eation"/>
 </jsp:include>
 
-	<div class="container_big">
+<script type="text/javascript">
+	function check() {
+		var ele = document.getElementsByClassName("to_be_check");
+		for (var i=0;i<ele.length;i++) {var e = ele[i];
+			if (e.value.length<2 || e.value.length>100 || e.value=="null") {
+				alert("You cannot submit empty/'null'/too long value!");
+				e.focus();return false;
+			}}return true;}
+</script>
 
 <%  String login_name = request.getParameter("Username");
 	if (request.getParameter("do")!=null) {
@@ -12,27 +20,35 @@
 		// Register part
 			if (login_name==null) {
 %>
-		<div class="col-md-6">
-			<image src="images/eation_w.png" style="float:left;width:100%;"/>
+
+	<div class="login-in minh">
+    	<div class="container">
+      		<div class="col-sm-5">      
+        		<img src="images/eation_w.png" alt="">
+      		</div>
+      		<div class="col-sm-7">
+         		<div class="login-inside">
+         			<br /><br /><br /><br /><br />
+					<form name="form1" action="login.jsp?do=register" method="post" accept-charset="utf-8" onSubmit="return check()">
+		              <div class="input-group">
+		                <span class="input-group-addon" id="basic-addon1">Username:</span>
+		                <input type="text" class="form-control to_be_check" name="Username" placeholder="Username" aria-describedby="basic-addon1">
+		              </div>
+		              <div class="input-group">
+		                <span class="input-group-addon" id="basic-addon1">Password:</span>
+		                <input type="password" class="form-control to_be_check" name="password" placeholder="******" aria-describedby="basic-addon2">
+		              </div>
+		              <div class="input-group">
+		                <span class="input-group-addon" id="basic-addon1">Repeat Password:</span>
+		                <input type="password" class="form-control to_be_check" name="password" placeholder="******" aria-describedby="basic-addon2">
+		              </div>
+		              <button class="btn btn-default" type="submit">Register</button>
+		              <button class="btn btn-default" onclick="refresh">Clear</button>
+		            </form>
+		        </div>
+		    </div>
 		</div>
-		<div class="col-md-6 login_section" style="padding:25px">
-			<form action="login.jsp?do=register" method="post" accept-charset="utf-8">
-              <div class="input-group">
-                <span class="input-group-addon" id="basic-addon1">Username:</span>
-                <input type="text" class="form-control" name="Username" placeholder="Username" aria-describedby="basic-addon1">
-              </div>
-              <div class="input-group">
-                <span class="input-group-addon" id="basic-addon1">Password:</span>
-                <input type="password" class="form-control" name="password" placeholder="******" aria-describedby="basic-addon2">
-              </div>
-              <div class="input-group">
-                <span class="input-group-addon" id="basic-addon1">Repeat Password:</span>
-                <input type="password" class="form-control" name="password" placeholder="******" aria-describedby="basic-addon2">
-              </div>
-              <button class="btn btn-default" type="submit">Register</button>
-              <button class="btn btn-default" onclick="refresh">Clear</button>
-            </form>
-		</div>
+	</div>
 <%
 			} else {
 				//register succ
@@ -55,25 +71,30 @@
 				if (request.getParameter("warn")!=null)
 					out.println("<div class=\"alert alert-danger\" role=\"alert\"><strong>Opps!</strong>Please Login first!</div>");
 %>
-			<div class="row">
-				<div class="col-md-6">
-				<image src="images/eation_w.png" style="float:left;width:100%;"/>
-				</div>
-				<div class="col-md-6 login_section" style="padding:25px">
-	            <form action="login.jsp?do=login" method="post" accept-charset="utf-8">
+	<div class="login-in minh">
+    	<div class="container">
+      		<div class="col-sm-5">      
+        		<img src="images/eation_w.png" alt="">
+      		</div>
+      		<div class="col-sm-7">
+         		<div class="login-inside">
+         			<br /><br /><br /><br /><br />
+					<form name="form1" action="login.jsp?do=login" method="post" accept-charset="utf-8" onSubmit="return check()">
 	              <div class="input-group">
 	                <span class="input-group-addon" id="basic-addon1">Username:</span>
-	                <input type="text" class="form-control" name="Username" placeholder="Username" aria-describedby="basic-addon1">
+	                <input type="text" class="form-control to_be_check" name="Username" placeholder="Username" aria-describedby="basic-addon1">
 	              </div>
 	              <div class="input-group">
 	                <span class="input-group-addon" id="basic-addon1">Password:</span>
-	                <input type="text" class="form-control" name="password" placeholder="******" aria-describedby="basic-addon2">
+	                <input type="password" class="form-control to_be_check" name="password" placeholder="******" aria-describedby="basic-addon2">
 	              </div>
 	              <button class="btn btn-default" type="submit">Login</button>
 	              <button class="btn btn-default" onclick="window.open('login.jsp?do=register')">Register</button>
 	            </form>
-				</div>
-			</div>
+		        </div>
+		    </div>
+		</div>
+	</div>
 <%
 			} else {
 				Order order = new Order();
@@ -90,29 +111,35 @@
 			} 
 		} else {}
 	} else if (session.getAttribute("login_name")==null) { 
-		if (request.getParameter("warn")!=null)
-			out.println("<div class=\"alert alert-danger\" role=\"alert\"><strong>Opps!</strong>Please Login first!</div>");
  %>
-			<div class="row">
-				<div class="col-md-6">
-				<image src="images/eation_w.png" style="float:left;width:100%;"/>
-				</div>
-				<div class="col-md-6 login_section" style="padding:25px">
-	            <form action="login.jsp?do=login" method="post" accept-charset="utf-8">
+	<div class="login-in minh">
+<%
+if (request.getParameter("warn")!=null)
+	out.println("<div class=\"alert alert-danger\" role=\"alert\"><strong>Opps!</strong>Please Login first!</div>");
+%>
+    	<div class="container">
+      		<div class="col-sm-5">      
+        		<img src="images/eation_w.png" alt="">
+      		</div>
+      		<div class="col-sm-7">
+         		<div class="login-inside">
+         			<br /><br /><br /><br /><br />
+					<form name="form1" action="login.jsp?do=login" method="post" accept-charset="utf-8" onSubmit="return check()">
 	              <div class="input-group">
 	                <span class="input-group-addon" id="basic-addon1">Username:</span>
-	                <input type="text" class="form-control" name="Username" placeholder="Username" aria-describedby="basic-addon1">
+	                <input type="text" class="form-control to_be_check" name="Username" placeholder="Username" aria-describedby="basic-addon1">
 	              </div>
 	              <div class="input-group">
 	                <span class="input-group-addon" id="basic-addon1">Password:</span>
-	                <input type="password" class="form-control" name="password" placeholder="******" aria-describedby="basic-addon2">
+	                <input type="password" class="form-control to_be_check" name="password" placeholder="******" aria-describedby="basic-addon2">
 	              </div>
 	              <button class="btn btn-default" type="submit">Login</button>
 	              <button class="btn btn-default" onclick="window.open('login.jsp?do=register')">Register</button>
 	            </form>
-				</div>
-			</div>
-
+		        </div>
+		    </div>
+		</div>
+	</div>
 <%	} else {
 %>
 

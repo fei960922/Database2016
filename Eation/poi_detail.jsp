@@ -9,6 +9,15 @@ contentType="text/html;charset=utf-8" %>
 <jsp:include page="include/head.jsp" flush="true"> 
 <jsp:param name="title" value="POI Selection --- Eation"/>
 </jsp:include>
+<script type="text/javascript">
+	function check() {
+		var ele = document.getElementsByClassName("to_be_check");
+		for (var i=0;i<ele.length;i++) {var e = ele[i];
+			if (e.value.length<2 || e.value.length>100 || e.value=="null") {
+				alert("You cannot submit empty/'null'/too long value!");
+				e.focus();return false;
+			}}return true;}
+</script>
 <div class="container">
 	<div class = "col-md-10"> 
 		<h1>POI Detail</h1>
@@ -46,35 +55,35 @@ contentType="text/html;charset=utf-8" %>
 				    <h2><%=results.getString("name") %></h2>
 				    <div class = "form-group col-sm-6">
 				    	<label for = "address"> Address </label>
-				    	<input type = "text" class = "form-control" name = "address" value = <%=results.getString("address") %>>
+				    	<input type = "text" class = "form-control to_be_check" name = "address" value = <%=results.getString("address") %>>
 				    </div>
 					<div class = "form-group col-sm-6">
 				    	<label for = "phone"> Phone </label>
-				    	<input type = "text" class = "form-control" name = "phone" value = <%=results.getString("phone") %>>
+				    	<input type = "text" class = "form-control to_be_check" name = "phone" value = <%=results.getString("phone") %>>
 				    </div>
 				    <div class = "form-group col-sm-6">
 				    	<label for = "url"> URL </label>
-				    	<input type = "text" class = "form-control" name = "url" value = <%=results.getString("url")%>>
+				    	<input type = "text" class = "form-control to_be_check" name = "url" value = <%=results.getString("url")%>>
 				    </div>
 				    <div class = "form-group col-sm-6">
 				    	<label for = "year_estab"> Establish Year </label>
-				    	<input type = "text" class = "form-control" name = "year_estab" value = <%=results.getString("year_estab") %> >
+				    	<input type = "text" class = "form-control to_be_check" name = "year_estab" value = <%=results.getString("year_estab") %> >
 				    </div>
 				    <div class = "form-group col-sm-6">
 				    	<label for = "hours_op"> Operation Hour </label>
-				    	<input type = "text" class = "form-control" name = "hours_op" value = <%=results.getString("hours_op") %>>
+				    	<input type = "text" class = "form-control to_be_check" name = "hours_op" value = <%=results.getString("hours_op") %>>
 				    </div>
 				    <div class = "form-group col-sm-6">
 				    	<label for = "price"> Price </label>
-				    	<input type = "text" class = "form-control" name = "price" value = <%=results.getString("price") %>>
+				    	<input type = "text" class = "form-control to_be_check" name = "price" value = <%=results.getString("price") %>>
 				    </div>
 				    <div class = "form-group col-sm-6">
 				    	<label for = "keywords"> Keywords </label>
-				    	<input type = "text" class = "form-control" name = "keywords" value = <%=results.getString("keywords") %>>
+				    	<input type = "text" class = "form-control to_be_check" name = "keywords" value = <%=results.getString("keywords") %>>
 				    </div>
 				    <div class = "form-group col-sm-6">
 				    	<label for = "category"> Category </label>
-				    	<input type = "text" class = "form-control" name = "category" value = <%=results.getString("category") %>>
+				    	<input type = "text" class = "form-control to_be_check" name = "category" value = <%=results.getString("category") %>>
 				    </div>
 				    <div class = "form-group col-sm-9">
 						<p>&nbsp;</p>
@@ -169,7 +178,7 @@ contentType="text/html;charset=utf-8" %>
 		                      	+"<td>"+results.getString("cost")+"</td>"
 		                      	+"<td>"+results.getString("no_person")+"</td></tr>");
 			}
-			if (!exist) out.println("<div class=\"alert alert-warning\" role=\"alert\" >No Feedbacks exists! Write the first one!</div>");
+			if (!exist) out.println("<div class=\"alert alert-warning\" role=\"alert\" >No visit record exists! Write the first one!</div>");
 %>
 			<form action="poi_detail.jsp?id=<%=pid %>" method="post" accept-charset="utf-8">
 			<tr>
@@ -177,9 +186,17 @@ contentType="text/html;charset=utf-8" %>
 			    <td><input type = "text" class = "form-control" name = "price" placeholder = "price"></td>
 			    <td><input type = "text" class = "form-control" name = "no_person" placeholder = "num of person"></td>
 		    </tr>
+<script type="text/javascript">
+	function confirm() {
+	  document.getElementById('button1').style.display = "none";
+	  document.getElementById('button2').style.display = "inline-block";
+	}
+</script>
 		    <tr>
 		    	<td></td><td></td>
-				<td><button class="btn btn-success" type="submit" align = "center" style="width:35%;margin:2%">Submit</button></td>
+				<td><button id="button1" class="btn btn-success" type="button" onclick="confirm()" align = "center" style="width:35%;margin:2%">Submit</button>
+					<button id="button2" class="btn btn-primary" type="submit" align = "center" style="display:none">Please confirm before submit</button>
+				</td>
 			</tr>
 			</form>
 			</tbody>

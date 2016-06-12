@@ -3,6 +3,15 @@
 <jsp:include page="include/head.jsp" flush="true"> 
 <jsp:param name="title" value="POI Selection --- Eation"/>
 </jsp:include>
+<script type="text/javascript">
+	function check() {
+		var ele = document.getElementsByClassName("to_be_check");
+		for (var i=0;i<ele.length;i++) {var e = ele[i];
+			if (e.value.length<2 || e.value.length>100 || e.value=="null") {
+				alert("You cannot submit empty/'null'/too long value!");
+				e.focus();return false;
+			}}return true;}
+</script>
 <div class="container">
 
 <%

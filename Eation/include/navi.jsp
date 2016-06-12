@@ -37,7 +37,7 @@
               </div>
               <div class="input-group">
                 <span class="input-group-addon" id="basic-addon1">Password:</span>
-                <input type="text" class="form-control" name="password" placeholder="******" aria-describedby="basic-addon2">
+                <input type="password" class="form-control" name="password" placeholder="******" aria-describedby="basic-addon2">
               </div>
               <button class="btn btn-default" type="submit">Login</button>
               <button class="btn btn-default" onclick="window.open('login.jsp?do=register')">Register</button>

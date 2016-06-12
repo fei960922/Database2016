@@ -7,7 +7,7 @@ import java.util.Date;
 //import javax.servlet.http.*;
 
 public class Order{
-	private Statement stmt;
+	private Statement stmt; 
 	private Statement stmt2;
 	public Order() throws Exception {
 		Connector c = new Connector();
@@ -36,7 +36,7 @@ public class Order{
 		return resultstr;
 	}
 	// Function 1 Registration
-	public boolean check_login (String username, String password) throws Exception{
+	public boolean check_login(String username, String password) throws Exception{
 		ResultSet results = stmt.executeQuery("Select count(*) AS cnt from person where log_name='"+username+"' AND password='"+password+"'");
 		results.next();
 		return (results.getInt("cnt")==1);
@@ -53,6 +53,7 @@ public class Order{
 		return (results.getInt("isadmin")==1);
 	}
 	public boolean updateUser(String username, String full_name, String address, String phone, String password, String pic_url) throws Exception {
+		if (pic_url.equals("null")) pic_url = "";
 		String query = "update person set full_name = '" + full_name + "', address = '" + address + "', phone = " + phone;
 		query += ", password = '" + password + "', pic_url = '" + pic_url + "' WHERE log_name = '" + username + "'";
 		try{
@@ -123,9 +124,8 @@ public class Order{
 	public boolean updatePOI(String pid, String name, String address, String url, 
 							String tele, String estyear, String opHour, String price, 
 							String keyword, String category) throws Exception {
-		
 		String query1 = "", query2 = "", query = "";
-		query = "update poi set name =  '"+name+"', address = '"+address+"', url = '"+url+"', phone = '"+tele+"', year_estab = '"+estyear+"',hours_op = '"+opHour+"', price = '"+price+"', keywords = '"+keyword+"', category = '"+category+"' where poi_id = '"+pid+"' ";
+		query = "update poi set name =  '"+name+"', address = '"+address+"', url = '"+url+"', phone = "+tele+", year_estab = "+estyear+",hours_op = "+opHour+", price = "+price+", keywords = '"+keyword+"', category = '"+category+"' where poi_id = '"+pid+"' ";
 		try{
 			System.out.println(query);
 			stmt.executeUpdate(query);
@@ -146,7 +146,7 @@ public class Order{
 	public boolean changeFavourite(String username, String poi_id, String status) throws Exception {
 		String query = "";
 		if (status.equals("fav")) 
-			query = "insert into favourite values ('"+username+"', "+poi_id+", '2016-12-31')";
+			query = "insert into favourite values ('"+username+"', "+poi_id+")";
 		else 
 			query = "delete from favourite where log_name='"+username+"' AND poi_id="+poi_id;
 		try{
@@ -295,7 +295,7 @@ public class Order{
 		if (m.length()==0) m = "5";
 		if (category.equals("Any")) category = "";
 		else category =  " and category='"+category+"'";
-		String query = "Select P.*, count(*) as cnt from poi P, Visited V where P.poi_id=V.poi_id"+category+" group by P.poi_id order by cnt DESC limit 0,"+m;
+		String query = "Select P.*, count(*) as cnt from poi P, visited V where P.poi_id=V.poi_id"+category+" group by P.poi_id order by cnt DESC limit 0,"+m;
 		try {
 			System.out.println(query);
 			results = stmt.executeQuery(query);
@@ -363,12 +363,12 @@ public class Order{
 		while (results.next()){
 			result += "<tr><td>";
 			if (results.getInt("isadmin")==1)
-				result += "¡ï";
+				result += "��";
 			result += 			 results.getString("log_name")
 					+"</td><td>"+results.getString("full_name")
 					+"</td><td>"+results.getString("address")
 					+"</td><td>"+results.getBigDecimal("phone")
-					+"</td><td>"+results.getInt("fav_poi")+"</td>";
+					+"</td>";
 			String to_tag = results.getString("log_name");
 			if (sort==1) {
 				result += "<td>"+results.getInt("cnt")+"</td></tr>";

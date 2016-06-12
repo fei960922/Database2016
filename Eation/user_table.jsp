@@ -21,7 +21,7 @@
 			</div>
         </div>
         <table class="table">
-        	<thead><tr><th>Username</th><th>Full Name</th><th>Address</th><th>Telephone</th><th>Favourite POI</th><th>Trusted</th></tr></thead>
+        	<thead><tr><th>Username</th><th>Full Name</th><th>Address</th><th>Telephone</th><th>Trusted</th></tr></thead>
         	<tbody>
 <%
 	Order order = new Order();
