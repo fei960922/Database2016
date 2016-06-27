@@ -38,11 +38,7 @@ public:
 /*******************ALL BELOW are purely local to buffer Manager********/
 
 // You should create enums for internal errors in the buffer manager.
-enum bufErrCodes  {ERROR};
-// Define error message here
-static const char* bufErrMsgs[] = { 
-  "Error!"
-};
+enum bufErrCodes  {BUFFERFULL, UNPINERROR, FREEERROR, FLUSHEMPTY};
 
 class Replacer;
 

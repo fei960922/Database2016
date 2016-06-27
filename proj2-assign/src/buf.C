@@ -13,6 +13,13 @@
 
 #include "buf.h"
 
+// Define error message here
+static const char* bufErrMsgs[] = { 
+    "[ERROR] The buffer is full!",
+    "[ERROR] Unpinning an non-exist page!",
+    "[ERROR] Free the non-empty page!"
+    "[ERROR] Flushing an empty page!"
+};
 // Create a static "error_string_table" object and register the error messages
 // with minibase system 
 static error_string_table bufTable(BUFMGR,bufErrMsgs);
@@ -33,9 +40,9 @@ Status BufMgr::pinPage(PageId PageId_in_a_DB, Page*& page, int emptyPage) {
     int frame = table->get(PageId_in_a_DB);
     if (frame==-1) {
         frame = findReplacer();
-        if (frame==-1) return FAIL;
-        if (MINIBASE_DB->read_page(PageId_in_a_DB, &(bufPool[frame])) != OK)
-            return FAIL;
+        if (frame==-1) return MINIBASE_FIRST_ERROR(BUFMGR,BUFFERFULL);
+        Status st = MINIBASE_DB->read_page(PageId_in_a_DB, &(bufPool[frame]));
+        if (st != OK) return MINIBASE_CHAIN_ERROR(BUFMGR, st);
         bd[frame].reset(PageId_in_a_DB);
         table->put(PageId_in_a_DB, frame);
     } else {
@@ -48,12 +55,12 @@ Status BufMgr::pinPage(PageId PageId_in_a_DB, Page*& page, int emptyPage) {
 }
 
 Status BufMgr::newPage(PageId& firstPageId, Page*& firstpage, int howmany) {
-    if (MINIBASE_DB->allocate_page(firstPageId, howmany) != OK)
-        return FAIL;
-    //cout<<"NEW "<<firstPageId<<' ';
-    if (pinPage(firstPageId, firstpage, 1) != OK) {
+    Status st = MINIBASE_DB->allocate_page(firstPageId, howmany);
+    if (st != OK) return MINIBASE_CHAIN_ERROR(BUFMGR, st);
+    st = pinPage(firstPageId, firstpage, 1);
+    if (st != OK) {
         MINIBASE_DB->deallocate_page(firstPageId, howmany);
-        return FAIL;
+        return st;
     }
     return OK;
 }
@@ -73,7 +80,7 @@ BufMgr::~BufMgr(){
 
 Status BufMgr::unpinPage(PageId globalPageId_in_a_DB, int dirty=FALSE, int hate = FALSE){
     int frame = table->get(globalPageId_in_a_DB);
-    if (frame == -1 || bd[frame].cnt == 0) return FAIL;
+    if (frame == -1 || bd[frame].cnt == 0) return MINIBASE_FIRST_ERROR(BUFMGR,UNPINERROR);
     bd[frame].cnt -= 1;
     bd[frame].dirty = bd[frame].dirty || dirty;
     bd[frame].hate = bd[frame].hate && hate;
@@ -85,9 +92,9 @@ Status BufMgr::unpinPage(PageId globalPageId_in_a_DB, int dirty=FALSE, int hate 
 
 Status BufMgr::freePage(PageId globalPageId){
     int frame = table->get(globalPageId);
-    if (frame==-1 || bd[frame].cnt>0) return FAIL;
-    if (MINIBASE_DB->deallocate_page(globalPageId, 1) != OK)
-        return FAIL;
+    if (frame==-1 || bd[frame].cnt>0) return MINIBASE_FIRST_ERROR(BUFMGR,FREEERROR);
+    Status st = MINIBASE_DB->deallocate_page(globalPageId, 1);
+    if (st != OK) return MINIBASE_CHAIN_ERROR(BUFMGR, st);
     replacementChange(frame, 0);
     table->remove(bd[frame].pid);
     bd[frame].pid = -1;
@@ -121,7 +128,7 @@ short BufMgr::findReplacer() {
 }
 
 Status BufMgr::flushFrame(int frame) {
-    if (frame == -1) return FAIL;
+    if (frame == -1) return MINIBASE_FIRST_ERROR(BUFMGR, FLUSHEMPTY);
     if (bd[frame].pid==-1) 
         return OK;
     if (bd[frame].dirty) {

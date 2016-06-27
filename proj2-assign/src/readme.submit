@@ -6,6 +6,13 @@
 
 ## The error type
 
+There are four types of error defined.
+
+- BUFFERFULL:	[ERROR] The buffer is full!
+- UNPINERROR: 	[ERROR] Unpinning an non-exist page!
+- FREEERROR: 	[ERROR] Free the non-empty page!
+- FLUSHEMPTY: 	[ERROR] Flushing an empty page!
+
 ## About Love/Hate replacement policy
 
 The Love one is a circulate queue called 'LRU', when unpinning a LOVE page, insert the frame at the end.The hate one is a stack called 'MRU', when unpinning a HATE page, insert the frame at the end.When finding a replacement, return the head of LRU if it exist. If not, return top of the MRU. They are O(1).
