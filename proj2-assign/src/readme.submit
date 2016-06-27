@@ -1,0 +1,13 @@
+# Buffer Manager
+
+- Author: Jerry Xu;
+- Number: 5130309056;
+- Class:  Database --- 2016 Summer;
+
+## The error type
+
+## About Love/Hate replacement policy
+
+The Love one is a circulate queue called 'LRU', when unpinning a LOVE page, insert the frame at the end.The hate one is a stack called 'MRU', when unpinning a HATE page, insert the frame at the end.When finding a replacement, return the head of LRU if it exist. If not, return top of the MRU. They are O(1).
+
+When calling a page again and need to modify the LRU/MRU or delete the frame in LRU/MRU, swap the neighbour several times to move them to the top/end. This is O(n).
